@@ -1,4 +1,6 @@
 import '@styles/globals.css';
+import Nav from '@components/Nav';
+import Provider from "@components/Provider";
 
 export const metadata = {
     title: "Share Propmts",
@@ -14,6 +16,7 @@ export default function RootLayout ({children }: {children: React.ReactNode;}) {
             </div>
 
             <main className='app'>
+                <Nav />
                 {children}
             </main>
         </body>
