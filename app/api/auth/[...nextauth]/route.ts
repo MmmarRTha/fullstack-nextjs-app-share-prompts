@@ -1,4 +1,5 @@
 import User from "@models/user.model";
+import { connectToDB } from "@utils/database";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -9,32 +10,34 @@ const handler = NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
         })
     ],
-    async session({ session }: { session: any }) {
-        const sessionUser = await User.findOne({
-            email: session.user.email
-        });
-        
-        session.user.id = sessionUser._id.toString();
-        return session;
-    }, 
-    async signIn({ profile }: { profile: any }) {
-        try {
-            // check if a user already exists.
-            const userExists = await User.findOne({
-                email: profile.email 
+    callbacks: {
+        async session({ session }: { session: any }) {
+            const sessionUser = await User.findOne({
+                email: session.user.email
             });
-
-            if (!userExists) {
-                await User.create({
-                    email: profile.email,
-                    username: profile.name.replace(" ", "").toLowerCase(),
-                    image: profile.picture
+            
+            session.user.id = sessionUser._id.toString();
+            return session;
+        }, 
+        async signIn({ profile }: { profile: any }) {
+            try {
+                await connectToDB();
+                const userExists = await User.findOne({
+                    email: profile.email 
                 });
+    
+                if (!userExists) {
+                    await User.create({
+                        email: profile.email,
+                        username: profile.name.replace(" ", "").toLowerCase(),
+                        image: profile.picture
+                    });
+                }
+    
+                return true;
+            } catch (error: unknown) {
+               throw new Error('Failed to sign in: ${error.message}');
             }
-
-            return true;
-        } catch (error: unknown) {
-           throw new Error('Failed to sign in: ${error.message}');
         }
     }
 })
