@@ -1,10 +1,6 @@
+import User from "@models/user.model";
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-
-console.log({
-    clientId: process.env.GOOGLE_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-})
 
 const handler = NextAuth({
     providers: [
@@ -13,11 +9,33 @@ const handler = NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
         })
     ],
-    async session({ session}) {
+    async session({ session }: { session: any }) {
+        const sessionUser = await User.findOne({
+            email: session.user.email
+        });
+        
+        session.user.id = sessionUser._id.toString();
+        return session;
+    }, 
+    async signIn({ profile }: { profile: any }) {
+        try {
+            // check if a user already exists.
+            const userExists = await User.findOne({
+                email: profile.email 
+            });
 
-    },
-    async signIn({ profile}){
+            if (!userExists) {
+                await User.create({
+                    email: profile.email,
+                    username: profile.name.replace(" ", "").toLowerCase(),
+                    image: profile.picture
+                });
+            }
 
+            return true;
+        } catch (error: unknown) {
+           throw new Error('Failed to sign in: ${error.message}');
+        }
     }
 })
 
