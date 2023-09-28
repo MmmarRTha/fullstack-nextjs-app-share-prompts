@@ -6,13 +6,15 @@ import React, { useEffect, useState } from 'react'
 
 const MyProfile = () => {
     const { data: session } = useSession();
-    const [posts, setPosts] = useState([]);
+    const [myPosts, setMyPosts] = useState([]);
+
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch(`/api/users/${session?.user.id}/posts`);
+            console.log("response", response);
             const { data } = await response.json();
 
-            setPosts(data);
+            setMyPosts(data);
     }
     if(session?.user.id) fetchPosts();
     }, []);
@@ -26,9 +28,9 @@ const MyProfile = () => {
     }
   return (
     <Profile
-        name="My Profile"
+        name="My"
         desc="Welcome to your personalized profile page"
-        data={posts}
+        data={myPosts}
         handleEdit={handleEdit}
         handleDelete={handleDelete} 
     />

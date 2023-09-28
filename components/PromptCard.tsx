@@ -1,14 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-type PromptCardProps = {
-    post: any;
-    handleTagClick: (tag: string) => void;
-    handleEdit: (id: string) => void;
-    handleDelete: (id: string) => void;
-  };
-
-const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }: PromptCardProps) => {
+const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     const [copied, setCopied] = useState("");
 
     console.log("console log:", post)
