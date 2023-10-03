@@ -15,22 +15,26 @@ const CreatePrompt = () => {
         setSubmitting(true);
 
         try {
-            const res = await fetch("/api/prompt/new", {
-                method: "POST",
-                body: JSON.stringify({
-                    prompt: post.prompt,
-                    userId: session?.user.id,
-                    tag: post.tag,
-                })
-            });
-
-            if(res.ok) {
-                router.push("/");
+            if (session?.user) {
+                const res = await fetch("/api/prompt/new", {
+                    method: "POST",
+                    body: JSON.stringify({
+                        prompt: post.prompt,
+                        userId: session?.user.id,
+                        tag: post.tag,
+                    })
+                });
+    
+                if(res.ok) {
+                    router.push("/");
+                }
             }
         } catch (error: unknown) {
-            throw new Error('Failed to create prompt: ${error.message}');
+                throw new Error('Failed to create prompt: ${error.message}');
+        } finally {
+                setSubmitting(false);
         }
-    }
+    }   
   
     return (
     <Form

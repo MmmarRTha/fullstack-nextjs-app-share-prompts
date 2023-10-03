@@ -2,39 +2,38 @@
 
 import Profile from '@components/Profile'
 import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
 const MyProfile = () => {
     const { data: session } = useSession();
-    const [myPosts, setMyPosts] = useState([]);
-
+    const [posts, setPosts] = useState([]);
     useEffect(() => {
         const fetchPosts = async () => {
             const response = await fetch(`/api/users/${session?.user.id}/posts`);
-            console.log("response", response);
-            const { data } = await response.json();
+            const data = await response.json();
 
-            setMyPosts(data);
-    }
-    if(session?.user.id) fetchPosts();
+            setPosts(data);
+        }
+        if(session?.user.id) fetchPosts();
     }, []);
 
-    const handleEdit = () => {
-        console.log("edit")
+    const handleEdit = async () => {
+
     }
 
     const handleDelete = async () => {
-        console.log("delete")
+
     }
+
   return (
     <Profile
         name="My"
-        desc="Welcome to your personalized profile page"
-        data={myPosts}
+        desc="Welcome to your personalized profile page!"
+        data={posts}
         handleEdit={handleEdit}
-        handleDelete={handleDelete} 
+        handleDelete={handleDelete}
     />
   )
 }
 
-export default MyProfile;
+export default MyProfile
