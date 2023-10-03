@@ -10,7 +10,7 @@ const CreatePrompt = () => {
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({prompt: "", tag: ""});
 
-    const createPrompt = async (e) => {
+    const createPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSubmitting(true);
 
