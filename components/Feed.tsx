@@ -32,7 +32,6 @@ const Feed = () => {
 
             setPosts(data);
         }
-        console.log("FETCHED POSTS", posts);
         fetchPosts();
     }, []);
 
