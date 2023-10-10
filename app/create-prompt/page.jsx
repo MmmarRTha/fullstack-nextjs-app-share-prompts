@@ -10,7 +10,7 @@ const CreatePrompt = () => {
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({prompt: "", tag: ""});
 
-    const createPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
+    const createPrompt = async (e) => {
         e.preventDefault();
         setSubmitting(true);
 
@@ -29,7 +29,7 @@ const CreatePrompt = () => {
                     router.push("/");
                 }
             }
-        } catch (error: unknown) {
+        } catch (error) {
                 throw new Error('Failed to create prompt: ${error.message}');
         } finally {
                 setSubmitting(false);
