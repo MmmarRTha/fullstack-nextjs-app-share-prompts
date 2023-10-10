@@ -11,7 +11,7 @@ const handler = NextAuth({
         })
     ],
     callbacks: {
-        async session({ session }: { session: any }) {
+        async session({ session }) {
             const sessionUser = await User.findOne({
                 email: session.user.email
             });
@@ -19,7 +19,7 @@ const handler = NextAuth({
             session.user.id = sessionUser._id.toString();
             return session;
         }, 
-        async signIn({ profile }: { profile: any }) {
+        async signIn({ profile }) {
             try {
                 await connectToDB();
                 const userExists = await User.findOne({
@@ -35,7 +35,7 @@ const handler = NextAuth({
                 }
     
                 return true;
-            } catch (error: unknown) {
+            } catch (error) {
                throw new Error('Failed to sign in: ${error.message}');
             }
         }

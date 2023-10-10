@@ -7,7 +7,7 @@ export const metadata = {
     description: 'Discover & Share AI Prompts'
 }
 
-export default function RootLayout ({children }: {children: React.ReactNode;}) {
+export default function RootLayout ({children }) {
   return (
     <html lang='en'>
         <body>
