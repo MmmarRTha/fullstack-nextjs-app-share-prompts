@@ -3,7 +3,7 @@ import Nav from '@components/Nav';
 import Provider from "@components/Provider";
 
 export const metadata = {
-    title: "Share Propmts",
+    title: "Share Prompts",
     description: 'Discover & Share AI Prompts'
 }
 
