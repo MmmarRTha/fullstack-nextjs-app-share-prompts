@@ -39,7 +39,6 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                     />
                     <div className="flex flex-col">
                         <h3 className="font-satoshi font-semibold text-gray-900">{post.creator.username}</h3>
-                        <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
                     </div>
                 </div>
                 <div className="copy-btn" onClick={handleCopy}>
