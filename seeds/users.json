@@ -1,0 +1,27 @@
+[
+  {
+    "email": "john.doe@example.com",
+    "username": "johndoe123",
+    "image": "/assets/images/avatar1.png"
+  },
+  {
+    "email": "jane.smith@example.com",
+    "username": "janesmith456",
+    "image": "/assets/images/avatar2.png"
+  },
+  {
+    "email": "alex.johnson@example.com",
+    "username": "alexjohnson",
+    "image": "/assets/images/avatar3.png"
+  },
+  {
+    "email": "sarah.wilson@example.com",
+    "username": "sarahwilson",
+    "image": "/assets/images/avatar4.png"
+  },
+  {
+    "email": "mike.brown@example.com",
+    "username": "mikebrown789",
+    "image": "/assets/images/avatar5.png"
+  }
+]

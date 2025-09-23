@@ -6,24 +6,36 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "node scripts/seed.js",
+    "seed:ts": "npx tsx scripts/seed.ts",
+    "seed:advanced": "npx tsx scripts/advanced-seed.ts",
+    "seed:users": "npx tsx scripts/advanced-seed.ts users",
+    "seed:prompts": "npx tsx scripts/advanced-seed.ts prompts",
+    "seed:clear": "npx tsx scripts/advanced-seed.ts all --no-clear",
+    "check-env": "node scripts/check-env.js",
+    "test-db": "node scripts/test-connection.js"
   },
   "dependencies": {
-    "@types/node": "20.12.4",
-    "@types/react": "18.2.74",
-    "@types/react-dom": "18.2.24",
-    "autoprefixer": "10.4.19",
+    "@types/node": "^20.14.15",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.21",
     "bcrypt": "^5.1.1",
-    "eslint": "8.57.0",
-    "eslint-config-next": "14.1.4",
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.3.0",
-    "next": "14.1.4",
-    "next-auth": "^4.24.7",
-    "postcss": "8.4.38",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tailwindcss": "3.4.3",
-    "typescript": "5.4.3"
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.15",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.5",
+    "next": "^14.2.15",
+    "next-auth": "^4.24.8",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.2"
   }
 }

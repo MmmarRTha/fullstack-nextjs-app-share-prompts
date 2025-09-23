@@ -1,0 +1,62 @@
+[
+  {
+    "prompt": "Write a compelling product description for a smart home device that learns your daily routines and adjusts lighting, temperature, and music automatically.",
+    "tag": "#productivity"
+  },
+  {
+    "prompt": "Create a social media strategy for a sustainable fashion brand targeting Gen Z consumers who value authenticity and environmental responsibility.",
+    "tag": "#marketing"
+  },
+  {
+    "prompt": "Develop a training program outline for remote team leaders focusing on building trust, maintaining engagement, and fostering collaboration across time zones.",
+    "tag": "#leadership"
+  },
+  {
+    "prompt": "Design a mobile app concept that helps users reduce food waste by tracking expiration dates, suggesting recipes, and connecting with local food banks.",
+    "tag": "#sustainability"
+  },
+  {
+    "prompt": "Write a compelling elevator pitch for a startup that uses AI to personalize learning experiences for students with different learning disabilities.",
+    "tag": "#education"
+  },
+  {
+    "prompt": "Create a content calendar for a fitness influencer who wants to share workout routines, nutrition tips, and mental health awareness content.",
+    "tag": "#fitness"
+  },
+  {
+    "prompt": "Develop a customer onboarding sequence for a SaaS platform that reduces churn and increases feature adoption within the first 30 days.",
+    "tag": "#saas"
+  },
+  {
+    "prompt": "Write a blog post outline about the future of remote work, including emerging technologies, workplace culture changes, and productivity tools.",
+    "tag": "#remotework"
+  },
+  {
+    "prompt": "Create a fundraising strategy for a nonprofit organization focused on providing coding education to underserved communities.",
+    "tag": "#nonprofit"
+  },
+  {
+    "prompt": "Design a user research plan to understand why customers abandon their shopping carts and what improvements could increase conversion rates.",
+    "tag": "#ux"
+  },
+  {
+    "prompt": "Develop a crisis communication plan template for small businesses dealing with negative social media feedback or PR issues.",
+    "tag": "#communication"
+  },
+  {
+    "prompt": "Write a comprehensive guide for first-time managers on conducting effective one-on-one meetings with their team members.",
+    "tag": "#management"
+  },
+  {
+    "prompt": "Create a personal branding strategy for a software developer looking to transition into a technical leadership role.",
+    "tag": "#career"
+  },
+  {
+    "prompt": "Design a gamification system for a language learning app that keeps users motivated through challenges, rewards, and social features.",
+    "tag": "#gamification"
+  },
+  {
+    "prompt": "Develop a content strategy for a B2B company selling cybersecurity solutions to small and medium-sized businesses.",
+    "tag": "#cybersecurity"
+  }
+]

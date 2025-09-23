@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {getProviders, signIn, signOut, useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
+import ClientOnly from './ClientOnly';
 
 const Nav = () => {
     const {data: session} = useSession();
@@ -27,96 +28,100 @@ const Nav = () => {
 
             {/*Desktop Navigation*/}
             <div className="sm:flex hidden">
-                {session?.user ? (
-                    <div className="flex gap-3 md:gap-5">
-                        <Link href="/create-prompt" className="black_btn">
-                            Create Post
-                        </Link>
-                        <button type="button" onClick={signOut} className="outline_btn">
-                            Sign Out
-                        </button>
+                <ClientOnly fallback={<div className="w-20 h-10"></div>}>
+                    {session?.user ? (
+                        <div className="flex gap-3 md:gap-5">
+                            <Link href="/create-prompt" className="black_btn">
+                                Create Post
+                            </Link>
+                            <button type="button" onClick={signOut} className="outline_btn">
+                                Sign Out
+                            </button>
 
-                        <Link href="/profile">
+                            <Link href="/profile">
+                                <Image
+                                    src={session?.user.image}
+                                    width={37}
+                                    height={37}
+                                    className="rounded-full"
+                                    alt="Profile Picture"
+                                />
+                            </Link>
+                        </div>
+                        ): (
+                          <>
+                              {providers && Object.values(providers).map((provider) => (
+                                  <button
+                                      type="button"
+                                      key={provider.name}
+                                      onClick={() => signIn(provider.id)}
+                                      className="black_btn"
+                                  >
+                                      Sign In
+                                  </button>
+                                ))}
+                          </>
+                        )}
+                </ClientOnly>
+            </div>
+            {/*Mobile Navigation*/}
+            <div className="sm:hidden flex relative">
+                <ClientOnly fallback={<div className="w-10 h-10"></div>}>
+                    {session?.user ? (
+                        <div className="flex">
                             <Image
                                 src={session?.user.image}
                                 width={37}
                                 height={37}
                                 className="rounded-full"
                                 alt="Profile Picture"
+                                onClick={() => setToggleDropdown((prevState) => !prevState)}
                             />
-                        </Link>
-                    </div>
-                    ): (
-                      <>
-                          {providers && Object.values(providers).map((provider) => (
-                              <button
-                                  type="button"
-                                  key={provider.name}
-                                  onClick={() => signIn(provider.id)}
-                                  className="black_btn"
-                              >
-                                  Sign In
-                              </button>
-                            ))}
-                      </>
-                    )}
-            </div>
-            {/*Mobile Navigation*/}
-            <div className="sm:hidden flex relative">
-                {session?.user ? (
-                    <div className="flex">
-                        <Image
-                            src={session?.user.image}
-                            width={37}
-                            height={37}
-                            className="rounded-full"
-                            alt="Profile Picture"
-                            onClick={() => setToggleDropdown((prevState) => !prevState)}
-                        />
-                        {/*dinamic dropdown*/}
-                        {toggleDropdown && (
-                            <div className="dropdown">
-                                <Link
-                                href="/profile"
-                                className="dropdown_link"
-                                onClick={() => setToggleDropdown(false)}
-                                >
-                                    My Profile
-                                </Link>
-                                <Link
-                                    href="/create-prompt"
+                            {/*dinamic dropdown*/}
+                            {toggleDropdown && (
+                                <div className="dropdown">
+                                    <Link
+                                    href="/profile"
                                     className="dropdown_link"
                                     onClick={() => setToggleDropdown(false)}
-                                >
-                                    Create Prompt
-                                </Link>
+                                    >
+                                        My Profile
+                                    </Link>
+                                    <Link
+                                        href="/create-prompt"
+                                        className="dropdown_link"
+                                        onClick={() => setToggleDropdown(false)}
+                                    >
+                                        Create Prompt
+                                    </Link>
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setToggleDropdown(false);
+                                            signOut();
+                                        }}
+                                        className="mt-5 w-full black_btn"
+                                    >
+                                        Sign Out
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    ): (
+                        <>
+                            {providers && Object.values(providers).map((provider) => (
                                 <button
                                     type="button"
-                                    onClick={() => {
-                                        setToggleDropdown(false);
-                                        signOut();
-                                    }}
-                                    className="mt-5 w-full black_btn"
+                                    key={provider.name}
+                                    onClick={() => signIn(provider.id)}
+                                    className="black_btn"
                                 >
-                                    Sign Out
+                                    Sign In
                                 </button>
-                            </div>
-                        )}
-                    </div>
-                ): (
-                    <>
-                        {providers && Object.values(providers).map((provider) => (
-                            <button
-                                type="button"
-                                key={provider.name}
-                                onClick={() => signIn(provider.id)}
-                                className="black_btn"
-                            >
-                                Sign In
-                            </button>
-                        ))}
-                    </>
-                )}
+                            ))}
+                        </>
+                    )}
+                </ClientOnly>
             </div>
         </nav>
     );
