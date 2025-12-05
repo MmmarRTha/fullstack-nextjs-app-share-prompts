@@ -17,25 +17,25 @@
     "test-db": "node scripts/test-connection.js"
   },
   "dependencies": {
-    "@types/node": "^20.14.15",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "autoprefixer": "^10.4.21",
-    "bcrypt": "^5.1.1",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.15",
-    "mongodb": "^6.12.0",
-    "mongoose": "^8.9.5",
-    "next": "^14.2.15",
-    "next-auth": "^4.24.8",
-    "postcss": "^8.4.47",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.9.2"
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "autoprefixer": "^10.4.22",
+    "bcrypt": "^6.0.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "^16.0.7",
+    "mongodb": "^7.0.0",
+    "mongoose": "^9.0.0",
+    "next": "^16.0.7",
+    "next-auth": "^4.24.13",
+    "postcss": "^8.5.6",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "dotenv": "^16.4.5",
-    "tsx": "^4.19.2"
+    "dotenv": "^17.2.3",
+    "tsx": "^4.21.0"
   }
 }
