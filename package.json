@@ -17,25 +17,25 @@
     "test-db": "node scripts/test-connection.js"
   },
   "dependencies": {
-    "@types/node": "^25.0.2",
-    "@types/react": "^19.2.7",
+    "@types/node": "^25.7.0",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "autoprefixer": "^10.4.22",
+    "autoprefixer": "^10.5.0",
     "bcrypt": "^6.0.0",
-    "eslint": "^9.39.2",
-    "eslint-config-next": "^16.0.10",
-    "mongodb": "^7.0.0",
-    "mongoose": "^9.0.1",
-    "next": "^16.0.10",
-    "next-auth": "^4.24.13",
-    "postcss": "^8.5.6",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "eslint": "^10.3.0",
+    "eslint-config-next": "^16.2.6",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.2",
+    "next": "^16.2.6",
+    "next-auth": "^4.24.14",
+    "postcss": "^8.5.14",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
-    "dotenv": "^17.2.3",
+    "dotenv": "^17.4.2",
     "tsx": "^4.21.0"
   }
 }
